@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800&display=swap">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body class="landing">
 
@@ -41,8 +41,9 @@
           <p class="tagline">Two animals. Three rules. One perfect solution.</p>
           <p class="lead">An animal-themed logic puzzle for mobile, looking for a publishing partner. Fill a 6×6 board with two animals so every row and column follows three simple rules. Every board has exactly one solution, reachable by logic alone.</p>
           <div class="cta-row">
+            <a class="btn btn-green" href="#gameplay" id="watch">▶ Watch gameplay</a>
             <a class="btn btn-yellow" href="https://drive.google.com/drive/folders/1yDPWeK3ObC1mlblRvoJEZqpMJH7vPjHw?usp=sharing" target="_blank" rel="noopener">Download APK</a>
-            <a class="btn btn-green" href="#contact">Get in touch</a>
+            <a class="btn btn-white" href="#contact">Get in touch</a>
           </div>
           <ul class="hero-tags">
             <li>Unity 6</li>
@@ -305,6 +306,12 @@
     <button class="v-nav v-next" type="button" aria-label="Next">›</button>
   </dialog>
 
+  <dialog class="player" id="player" aria-label="Gameplay video">
+    <button class="v-close" type="button" aria-label="Close video">×</button>
+    <video src="assets/Videos/PawDuo_Gameplay.mp4" poster="assets/InGamePictures/web/02_Board.webp"
+           controls playsinline preload="none"></video>
+  </dialog>
+
   <script>
     (function () {
       var track = document.getElementById('track');
@@ -331,6 +338,27 @@
       viewer.querySelector('.v-prev').addEventListener('click', function () { show(index - 1); });
       viewer.querySelector('.v-next').addEventListener('click', function () { show(index + 1); });
       viewer.addEventListener('click', function (e) { if (e.target === viewer) viewer.close(); });
+      // "Watch gameplay": the video from the start, with sound, in a full-screen player.
+      var player = document.getElementById('player');
+      var big = player.querySelector('video');
+      var hero = document.querySelector('.phone video');
+      document.getElementById('watch').addEventListener('click', function (e) {
+        if (!player.showModal) return; // old browsers: the link scrolls to the phone instead
+        e.preventDefault();
+        hero.pause();
+        player.showModal();
+        big.currentTime = 0;
+        big.muted = false;
+        var playing = big.play();
+        if (playing && playing.catch) playing.catch(function () { big.muted = true; big.play(); });
+      });
+      player.querySelector('.v-close').addEventListener('click', function () { player.close(); });
+      player.addEventListener('click', function (e) { if (e.target === player) player.close(); });
+      player.addEventListener('close', function () {
+        big.pause();
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) hero.play();
+      });
+
       viewer.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft') show(index - 1);
         if (e.key === 'ArrowRight') show(index + 1);

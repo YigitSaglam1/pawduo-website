@@ -459,6 +459,7 @@ header.site nav a { text-decoration: none; font-weight: 800; }
 .nav-cta:hover { color: #0b1b2c !important; filter: brightness(1.05); }
 
 /* ---------- Publishers page (unlisted) ---------- */
+.btn-white { background: #fff; color: #0b1b2c; box-shadow: 0 5px 0 #b9cbdc, 0 5px 0 3px #0b1b2c; }
 .hero-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 0; padding: 0; }
 .hero-tags li {
   padding: 4px 12px;
