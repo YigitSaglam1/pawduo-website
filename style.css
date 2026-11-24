@@ -388,6 +388,7 @@ header.site nav a { text-decoration: none; font-weight: 800; }
 .closing-card h2 { margin: 14px 0 8px; font-size: clamp(1.8rem, 4vw, 2.4rem); }
 .closing-card p { margin: 0 auto 24px; max-width: 520px; color: rgba(255, 255, 255, 0.92); }
 .closing-card .btn { overflow-wrap: anywhere; }
+.closing-actions { justify-content: center; margin-top: 0; }
 
 /* Round yellow buttons: older iOS Safari adds its own button padding and stretches them into ovals with the
    symbol off-center, so the size and centering are pinned here. */
@@ -411,6 +412,51 @@ header.site nav a { text-decoration: none; font-weight: 800; }
   text-align: center;
   -webkit-tap-highlight-color: transparent;
 }
+
+/* ---------- Become a Tester page ---------- */
+.hero-short { padding-bottom: 88px; }
+.tester-hero { max-width: 640px; margin: 0 auto; padding-top: 16px; text-align: center; }
+.tester-hero .tester-icon { display: block; margin: 0 auto 12px; filter: drop-shadow(0 6px 0 rgba(11, 27, 44, 0.35)); }
+.tester-hero h1 {
+  margin: 4px 0 12px;
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  line-height: 1.05;
+  -webkit-text-stroke: 3px #0b1b2c;
+  paint-order: stroke fill;
+  text-shadow: 0 5px 0 #0b1b2c;
+}
+.tester-hero .lead { margin: 0 auto; }
+.tester-hero .cta-row { justify-content: center; }
+.tester-hero .btn { font-size: 1.35rem; padding: 14px 34px; }
+.fineprint { margin: 18px 0 0; font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); }
+
+.step-no {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 3px solid #0b1b2c;
+  background: var(--yellow);
+  color: #0b1b2c;
+  font-family: "Lilita One", system-ui, sans-serif;
+  font-size: 1.7rem;
+  box-shadow: 0 4px 0 #0b1b2c;
+}
+
+.feature-grid.two { grid-template-columns: repeat(2, 1fr); }
+.tester-info { padding-top: 0; }
+@media (max-width: 600px) { .feature-grid.two { grid-template-columns: 1fr; } }
+.note { max-width: 720px; margin: 24px auto 0; text-align: center; color: var(--muted); font-size: 0.95rem; }
+
+.nav-cta {
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--yellow);
+  color: #0b1b2c !important;
+  border: 2px solid #0b1b2c;
+}
+.nav-cta:hover { color: #0b1b2c !important; filter: brightness(1.05); }
 
 /* ---------- Doc pages (privacy, terms) ---------- */
 .badge {
